@@ -59,6 +59,20 @@ class User5(private val name: String, protected var age: Int) {
   }
 }
 
+class Vehicle {
+  def go = "Vehicle goes!"
+  override def toString: String = getClass.getName
+}
+
+class Car extends Vehicle {
+//  override def toString: String = getClass.getName  // returns "Car" either defined or not
+}
+
+class Lexus extends Car {
+  override def go = "Lexus goes!" // override is necessary anyway!
+  override def toString: String = getClass.getName
+}
+
 
 object ClassesExample {
   def main(args: Array[String]): Unit = {
@@ -96,6 +110,18 @@ object ClassesExample {
     println("Age difference: " + user5(26))
     println("Age difference: " + user5.apply(26))
     println(user5("Exadel"))
+
+    val vehicle = new Vehicle
+    val car = new Car
+    val lexus = new Lexus
+    println(vehicle)
+    println(vehicle.go)
+
+    println(car)
+    println(car.go)
+
+    println(lexus)
+    println(lexus.go)
 
   }
 }
