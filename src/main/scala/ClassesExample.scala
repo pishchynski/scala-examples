@@ -59,6 +59,9 @@ class User5(private val name: String, protected var age: Int) {
   }
 }
 
+/**
+  * Inheritance example
+  */
 class Vehicle {
   def go = "Vehicle goes!"
   override def toString: String = getClass.getName
@@ -73,6 +76,12 @@ class Lexus extends Car {
   override def toString: String = getClass.getName
 }
 
+/**
+  * Type param example
+  */
+class Singular[T] (element: T) extends Traversable[T] {
+  def foreach[S] (f: T => S): Unit = f(element)
+}
 
 object ClassesExample {
   def main(args: Array[String]): Unit = {
@@ -123,5 +132,9 @@ object ClassesExample {
     println(lexus)
     println(lexus.go)
 
+    val p = new Singular("Planes")
+    p foreach println
+    val name: String = p.head
+    println(name)
   }
 }
