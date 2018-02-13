@@ -10,14 +10,20 @@ object Hello {
   * Companion object example
   */
 class Multiplier(val x: Int) {
+  private val smth = "nnn"
+  println("Class Multiplier instantiated")
   def apply(y: Int): Int = x * y
   def getMyName = s"My name is ${Multiplier.myName}" // We can get access to private members of companion object but not vice versa!
 }
 
 object Multiplier {
   private val myName = "Multiplier"
+  println("Object Multiplier instantiated")
 
-  def apply(x: Int) = new Multiplier(x) // Factory!
+  def apply(x: Int): Multiplier = {
+    println("Creating Multiplier from object")
+    new Multiplier(x) // Factory!
+  }
 }
 
 /**
@@ -30,7 +36,7 @@ object ObjectsExample {
     println(Hello.greet)
     println(Hello.greet)
 
-    val tripler = Multiplier(3) // Create 3x multiplier
+    val tripler = Multiplier.apply(3) // Create 3x multiplier
     println(tripler(5))
 
     println(Multiplier(3)(7))   // LOL
@@ -46,5 +52,9 @@ object ObjectsExample {
 
     val anotherRichPerson = Person("Big Boss", isRich = true)
     println(anotherRichPerson == richPerson)  // returns true because equals method (and hashCode method too) was also generated based on class fields
+    println(Person.unapply(anotherRichPerson))
+    anotherRichPerson match {
+      case Person("Big Boss", _) => println("Hi!")
+    }
   }
 }
