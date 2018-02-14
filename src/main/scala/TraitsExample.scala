@@ -37,6 +37,9 @@ class Animal {
 }
 
 trait Furry extends Animal {
+  def hi() : Unit = {
+    println("Hi, Furry")
+  }
   override def toString: String = "Furry->" + super.toString
 }
 
@@ -45,10 +48,14 @@ trait HasLegs extends Animal {
 }
 
 trait FourLegged extends HasLegs {
+  def hi() : Unit = {
+    println("Hi, FourLegged")
+  }
   override def toString: String = "FourLegged->" + super.toString
 }
 
-class Cat extends Animal with Furry with FourLegged {
+class Cat extends FourLegged with Furry{
+  override def hi(): Unit = super.hi()
   override def toString: String = "Cat->" + super.toString
 }
 
@@ -118,6 +125,9 @@ object TraitsExample {
 
     val cat = new Cat
     println(cat + "\n")
+    cat.hi()
+
+    val idTest = new IdSpec()
 
     val asta = new Person("Astashynski") with PhD
     println(asta)
