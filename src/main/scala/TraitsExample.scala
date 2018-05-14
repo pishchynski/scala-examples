@@ -92,18 +92,18 @@ class IdSpec extends TestSuite("ID Tests ") with RandomSeeded {
 /**
   * Instantiation with traits example
   */
-class Person(val name: String) {
+class SciPerson(val name: String) {
   def suffix = ""
   override def toString: String = s"$name$suffix"
 }
 
 trait PhD {
-  self: Person =>
+  self: SciPerson =>
   override def suffix = ", PhD"
 }
 
 trait MD {
-  self: Person =>
+  self: SciPerson =>
   override def suffix = ", MD"
 }
 
@@ -129,13 +129,13 @@ object TraitsExample {
 
     val idTest = new IdSpec()
 
-    val asta = new Person("Astashynski") with PhD
+    val asta = new SciPerson("Astashynski") with PhD
     println(asta)
 
-    val house = new Person("House") with MD
+    val house = new SciPerson("House") with MD
     println(house)
 
-    val atsa = new Person("Astashynski") with PhD with Reverser
+    val atsa = new SciPerson("Astashynski") with PhD with Reverser
     println(atsa)
 
     // val testSuite = new TestSuite("test") with PhD   // won't compile

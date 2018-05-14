@@ -1,5 +1,5 @@
 import Implicits.{TrickyString, stringToTricky}
-import Implicits.IntUtils.IntWithTimes
+import Implicits.IntWithTimes
 
 /**
   * Example of implicit parameter
@@ -11,8 +11,8 @@ object Greeter {
 }
 
 object Greeter2 {
-  def greet(name: String)(implicit greeting: String): Unit = {
-    println(s"$greeting, $name!")
+  def greet(name: String)(implicit greeting: String, greeting2: TrickyString): Unit = {
+    println(s"$greeting, $greeting2, $name!")
   }
 }
 
@@ -45,13 +45,14 @@ object ImplicitsExample {
     println()
 
     implicit val defaultHello: String = "Hello"
+    implicit val defaultHello2: TrickyString = "Hello"
 
-    Greeter2.greet("User")
+//    Greeter2 greet "User" "Hi"
 
     println()
 
     // Greeter.greet("User") // Error
-    Greeter.greet("Megauser")("Nice to see you")  // We still can provide implicit value explicitly
+//    Greeter.greet("Megauser")("Nice to see you")  // We still can provide implicit value explicitly
 
     println()
 

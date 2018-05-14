@@ -9,11 +9,9 @@ object Implicits {
     override def toString: String = data
   }
 
-
   /**
     * Example of implicit class
     */
-  object IntUtils {
     implicit class IntWithTimes(x: Int) {
       def times(f: => Unit): Unit = {
         for (_ <- 1 to x) {
@@ -21,6 +19,4 @@ object Implicits {
         }
       }
     }
-  }
-
 }

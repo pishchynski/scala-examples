@@ -18,14 +18,12 @@
             <artifactId>scala-library</artifactId>
             <groupId>org.scala-lang</groupId>
             <version>${scala.version}</version>
-            <scope>${dependency.resolution.strategy}</scope>
         </dependency>
 
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-reflect</artifactId>
-            <version>2.11.12</version>
-            <scope>${dependency.resolution.strategy}</scope>
+            <version>${scala.version}</version>
         </dependency>
 
         <dependency>
@@ -42,9 +40,36 @@
         </dependency>
 
         <dependency>
+            <groupId>com.chuusai</groupId>
+            <artifactId>shapeless_2.11</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.beachape</groupId>
             <artifactId>enumeratum_2.11</artifactId>
             <version>1.5.12</version>
+        </dependency>
+
+        <!--TESTING-->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.11</artifactId>
+            <version>3.0.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scalactic</groupId>
+            <artifactId>scalactic_2.11</artifactId>
+            <version>3.0.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scalamock</groupId>
+            <artifactId>scalamock-scalatest-support_2.11</artifactId>
+            <version>3.6.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
